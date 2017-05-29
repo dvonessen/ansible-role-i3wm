@@ -1,22 +1,35 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+This role installs and configures i3wm and its dependencies. 
 
-Requirements
-------------
-
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+This role has severall variables to specify the install behavior.
+
+```
+i3wm_i3wm_packages:
+  - i3-wm
+  - libglvnd
+  - dmenu
+```
+You can override this variable to specifiy other packages to install, If you do this you have to add i3wm as well to this variable.
+
+`i3wm_statusbar_package: i3status`
+This installs the status bar tool to provide information about your system and calls the JSON API of i3bar
+
+`i3wm_diplay_locker_package: i3lock`
+The lock manager. defaults to i3lock
+
+`i3wm_additional_packages`
+Here you can add packages as a list, if you wand to install more packages dependent on your system and window manager. e.g: i3blocks, acpi etc.
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+thielking.i3wm
 
 Example Playbook
 ----------------
@@ -25,14 +38,4 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: servers
       roles:
-         - { role: username.rolename, x: 42 }
-
-License
--------
-
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+         - { role: thielking.i3wm, i3wm_additional_packages: acpi }
