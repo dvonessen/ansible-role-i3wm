@@ -1,0 +1,30 @@
+---
+- name: Load OS-dependent variables
+  include_vars: "{{ ansible_os_family }}.yaml"
+
+- name: Install i3wm
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ i3wm_i3wm_packages }}"
+  become: True
+
+- name: Install i3wm statusbar
+  package:
+    name: "{{ i3wm_statusbar_package }}"
+    state: present
+  become: True
+
+- name: Install i3wm display locker
+  package:
+    name: "{{ i3wm_display_locker_package }}"
+    state: present
+  become: True
+
+- name: Install additional packages
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ i3wm_additional_packages|list }}"
+  when: i3wm_additional_packages != ""
+  become: True

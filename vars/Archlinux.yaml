@@ -1,0 +1,12 @@
+---
+# Packages to install for i3wm
+i3wm_i3wm_packages:
+  - i3-wm
+  - libglvnd
+  - dmenu
+
+# Install i3status
+i3wm_statusbar_package: i3status
+
+# Install i3lock
+i3wm_display_locker_package: i3lock
