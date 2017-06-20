@@ -1,4 +1,4 @@
-Role Name
+i3wm Windows Manager
 =========
 
 This role installs and configures i3wm and its dependencies. 
@@ -25,11 +25,6 @@ The lock manager. defaults to i3lock
 
 `i3wm_additional_packages`
 Here you can add packages as a list, if you wand to install more packages dependent on your system and window manager. e.g: i3blocks, acpi etc.
-
-Dependencies
-------------
-
-thielking.i3wm
 
 Example Playbook
 ----------------
